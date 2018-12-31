@@ -64,7 +64,7 @@ describe('controller', function () {
         var todo = {title: 'my todo'};
         setUpModel([todo]);
 
-        subject.setView('');
+        subject.setView(''); // subject.showAll ?
 
         expect(view.render).not.toBe(null);
 	});
