@@ -59,14 +59,14 @@ describe('controller', function () {
 	});
 
 	it('should show entries on start-up', function () {
-		// TODO: write test
+        // On fait un objet todo qu'on va placer dans un setUpModel pour ensuite charger et afficher grâce à subject.setView('')
         
         var todo = {title: 'my todo'};
         setUpModel([todo]);
 
-        subject.setView(''); // subject.showAll ?
+        subject.setView('');
 
-        expect(view.render).not.toBe(null);
+        expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
 	});
 
 	describe('routing', function () {
@@ -90,20 +90,20 @@ describe('controller', function () {
 		});
 
 		it('should show active entries', function () {
-			// TODO: write test
+            // Montre les todos actives dans l'onglet "active"
             
-            var todo = {title: 'my todo'};
+            var todo = {title: 'my todo', completed: false};
             setUpModel([todo]);
 
             subject.setView('#/active');
 
-            expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
+            expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);	
 		});
 
 		it('should show completed entries', function () {
-			// TODO: write test
+            // Montre les todos complètes dans l'onglet "completed"
             
-            var todo = {title: 'my todo'};
+            var todo = {title: 'my todo', completed: true};
             setUpModel([todo]);
 
             subject.setView('#/completed');
@@ -155,33 +155,66 @@ describe('controller', function () {
 	});
 
 	it('should highlight "All" filter by default', function () {
-		// TODO: write test
+		// Le filtre All devrait être surligné par défaut
+        
+        var todo = {title: 'my todo'};
+        setUpModel([todo]);
+        
+        subject.setView('');
+        
+        expect(view.render).toHaveBeenCalledWith('setFilter', '');
 	});
 
 	it('should highlight "Active" filter when switching to active view', function () {
-		// TODO: write test
+        // le filtre "Active" devrait être surligné dans l'onglet active
+        
+        var todo = {title: 'my todo'};
+        setUpModel([todo]);
+        
+        subject.setView('#/active');
+        
+        expect(view.render).toHaveBeenCalledWith('setFilter', 'active');
 	});
 
 	describe('toggle all', function () {
 		it('should toggle all todos to completed', function () {
-			// TODO: write test
+            // Passe les todos de All à Completed
+            
+            var todo = {id: 42, title: 'my todo', completed: false};
+            setUpModel([todo]);
+            
+            subject.setView('');
+            
+            subject.toggleAll(true);
+
+            expect(model.update).toHaveBeenCalledWith(42, {completed: true}, jasmine.any(Function));
 		});
 
 		it('should update the view', function () {
-			// TODO: write test
+            // Mettre la vue à jour
             
-            var todo = {id: 42, title: 'my todo', completed: true};
+            var todo = {id: 42, title: 'my todo', completed: false};
             setUpModel([todo]);
-
+            
             subject.setView('');
-
-            expect(view.render).toHaveBeenCalledWith('updateElementCount', 0);
+            
+            subject.toggleAll(true);
+            
+            expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 42, completed: true});
 		});
 	});
 
 	describe('new todo', function () {
 		it('should add a new todo to the model', function () {
-			// TODO: write test
+            // Ajoute une nouvelle todo au model
+            
+            setUpModel([]);
+
+            subject.setView('');
+
+            view.trigger('newTodo', 'a new task to do');
+
+            expect(model.create).toHaveBeenCalledWith('a new task to do', jasmine.any(Function));
 		});
 
 		it('should add a new todo to the view', function () {
@@ -221,7 +254,16 @@ describe('controller', function () {
 
 	describe('element removal', function () {
 		it('should remove an entry from the model', function () {
-			// TODO: write test
+            // Efface une todo du model
+            
+            var todo = {id: 42, title: 'my todo'};
+            setUpModel([todo]);
+
+            subject.setView('');
+
+            view.trigger('itemRemove', {id: 42});
+
+            expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function));
 		});
 
 		it('should remove an entry from the view', function () {
