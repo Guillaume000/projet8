@@ -1,63 +1,45 @@
-Audit de performance (300 - 500 mots)
-
-// Décrire la performance du site
-// Comment il se distingue de mon application ?
-// Comment optimiser la performance si on décide d'améliorer notre application ?
-
-
-Ressources utilisées par les différents éléments du site :
-
-    Le First Contentful Paint s'affiche rapidement ainsi que le First Meaningful Paint
-    Le Speed Index et le Time to Interactive consomment un peu plus de ressources
-    Le chargement est plus long pour le First CPU Idle et le Estimated Input Latency
-    
-    Il y a 36 fichiers qui ne sont pas en cache
-    Le main-thread est lent
-    Il y a 14 ressources principales qui se chargent au lancement de la page
-    
-    La taille des images est bonne
-    Les fichiers sont minifiés pour une meilleure vitesse
-    Les formats vidéo sont utilisés à la place du GIF
-    La taille du DOM est petite
-    
-    Ne répond pas avec un code 200 en étant offline
-    Le site n'utilise pas HTTPS (pour la sécurité)
-    Il n'y a pas de balise <meta name="viewport"> pour le support sur mobile
-    Le site n'est pas responsive
-    Il n'y a pas de Service Worker pour les notifications push, le mode offline et l'ajout du site en raccourci sur la page d'accueil
-    5 images n'ont pas d'attribut [alt]
-    Il y a des attributs [id] qui ne sont pas uniques
-
-
-Ressources utilisées par les publicités sur le site :
-
-    
-
-
-Ressources utilisées pour effectuer les fonctionnalités TODO pour la liste elle-même :
-
-    
-
-
 1 - Décrire la performance du site
 
-    La compression gzip est activée. Cela permet de réduire la taille des fichiers pour un transfert et permet un téléchargement rapide de votre contenu.
-    
-    Le site est compact, ce qui lui permet d'être chargé rapidement.
+Sous Google Chrome, j'ai utilisé la console pour faire un audit de performance, voici le résultat :
+
+    - La page se charge en 4,04 secondes.
+    - Elle utilise 76 requêtes.
+    - le navigateur charge 53,5 KB.
+    - Redirige des urls avec le code de statut 307.
+
+Nous pouvons observer dans l'onglet Performance un cercle découpé en plusieurs segments qui représentent les éléments du site :
+
+    Les fichiers HTML sont en bleu avec 39,8 ms.
+    Les fichiers JavaScript sont en jaune avec 939,1 ms.
+    Les feuilles de style CSS sont en violet avec 70,4 ms.
+    Les images, musiques et autres éléments média sont en vert avec 20,5 ms.
+    Les éléments divers sont en gris avec 249,3 ms.
+    Quand rien ne se passe, l'élément est en blanc avec 4069,2 ms.
+
+Pour optimiser cela, nous pourrions minifier les fichiers CSS et JS pour diminuer le poids (en enlevant les espaces et les commentaires) et ainsi augmenter la vitesse de chargement.
+
+
 
 
 2 - Comment il se distingue de mon application ?
 
-    Sur le site concurrent, on peut observer les tâches "à faire" et les tâches "terminées" en même temps.
-    Une aide est disponible en survolant l'icône i.
-    Un calendrier ainsi que la possibilité de faire glisser une tâche (grâce au Drag and Drop) dans un onglet "tomorrow" ou "later" permet d'organiser les listes de tâches.
-    
-    Les boutons "réseaux sociaux" sont présents.
-    Il y a un filtre pour trier les tâches.
+Sur le site concurrent todolistme.net, on peut observer les tâches "à faire" et les tâches "terminées" en même temps.
+Une aide est disponible en survolant l'icône i.
+
+Un calendrier ainsi que la possibilité de faire glisser une tâche (grâce au Drag and Drop) dans un onglet "tomorrow" ou "later" permet d'organiser les listes de tâches.
+
+Une possibilité de créer, modifier, supprimer une tâche ou une liste de tâches.
+
+Le site utilise la publicité et comporte plusieurs pages.
+
+Les boutons "réseaux sociaux" sont présents.
+Il y a un filtre pour trier les tâches.
+
+Le site se charge plus lentement car il est stylisé (couleurs, images, effets au survol).
+
+
+
 
 3 - Comment optimiser la performance si on décide d'améliorer notre application ?
 
-    Il faut faire un audit de notre application, examiner le rapport de performance, les détails, les corriger au fur et à mesure et exécuter un audit à chaque élément corrigé.
-
-
-
+Il faut faire un audit de notre application, examiner le rapport de performance, les détails, les corriger au fur et à mesure et exécuter un audit à chaque élément corrigé.
