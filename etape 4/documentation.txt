@@ -1,6 +1,6 @@
 Documentation
 
-// Le projet (usage non-technique)
+Le projet (usage non-technique)
 
     Le projet est une application de gestion de tâches à effectuer (TO DO LIST).
     
@@ -9,7 +9,7 @@ Documentation
     Une fois que l'on a terminé une tâche, on la coche pour indiquer qu'elle est accomplie et on peut passer à la suivante. 
 
 
-// Le fonctionnement (technique)
+Le fonctionnement (technique)
 
     Il faut d'entrer dans la zone de texte la tâche que vous souhaitez et de taper sur la touche "entrée" du clavier pour voir votre tâche apparaitre juste en dessous.
 
@@ -22,14 +22,3 @@ Documentation
     On peut supprimer une tâche en survolant sa zone de texte pour voir une croix apparaitre à droite et en cliquant sur cette dernière.
     
     Si la tâche est terminée, on coche le rond à gauche de la zone de texte et on clique sur le "Clear completed" qui est apparu en bas à droite du cadre. 
-
-
-// L'audit
-
-    
-
-
-
-
-
-
