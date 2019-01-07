@@ -59,7 +59,7 @@ describe('controller', function () {
 	});
 
 	it('should show entries on start-up', function () {
-        // On fait un objet todo qu'on va placer dans un setUpModel pour ensuite charger et afficher grâce à subject.setView('')
+        // On fait un objet "todo" qu'on va placer dans un setUpModel (instance unique pour ce test) pour ensuite charger et afficher grâce à subject.setView('')
         
         var todo = {title: 'my todo'};
         setUpModel([todo]);
