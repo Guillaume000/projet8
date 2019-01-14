@@ -59,7 +59,7 @@ describe('controller', function () {
 	});
 
 	it('should show entries on start-up', function () {
-        // On fait un objet "todo" qu'on va placer dans un setUpModel (instance unique pour ce test) pour ensuite charger et afficher grâce à subject.setView('')
+        // We make a "todo" object, we will put in a setUpModel (unique instance for this test) to load and display with subject.setView ('')
         
         var todo = {title: 'my todo'};
         setUpModel([todo]);
@@ -90,7 +90,7 @@ describe('controller', function () {
 		});
 
 		it('should show active entries', function () {
-            // Montre les todos actives dans l'onglet "active"
+            // Show active todo in "active" tab
             
             var todo = {title: 'my todo', completed: false};
             setUpModel([todo]);
@@ -101,7 +101,7 @@ describe('controller', function () {
 		});
 
 		it('should show completed entries', function () {
-            // Montre les todos complètes dans l'onglet "completed"
+            // Show completed todo in "completed" tab
             
             var todo = {title: 'my todo', completed: true};
             setUpModel([todo]);
@@ -155,7 +155,7 @@ describe('controller', function () {
 	});
 
 	it('should highlight "All" filter by default', function () {
-		// Le filtre All devrait être surligné par défaut
+        // By default, highlight "All" filter
         
         var todo = {title: 'my todo'};
         setUpModel([todo]);
@@ -166,7 +166,7 @@ describe('controller', function () {
 	});
 
 	it('should highlight "Active" filter when switching to active view', function () {
-        // le filtre "Active" devrait être surligné dans l'onglet active
+        // Highlight "Active" in "Active" filter
         
         var todo = {title: 'my todo'};
         setUpModel([todo]);
@@ -178,7 +178,7 @@ describe('controller', function () {
 
 	describe('toggle all', function () {
 		it('should toggle all todos to completed', function () {
-            // Passe les todos de All à Completed
+            // Switch all todos to completed
             
             var todo = {id: 42, title: 'my todo', completed: false};
             setUpModel([todo]);
@@ -191,7 +191,7 @@ describe('controller', function () {
 		});
 
 		it('should update the view', function () {
-            // Mettre la vue à jour
+            // Update the view
             
             var todo = {id: 42, title: 'my todo', completed: false};
             setUpModel([todo]);
@@ -206,7 +206,7 @@ describe('controller', function () {
 
 	describe('new todo', function () {
 		it('should add a new todo to the model', function () {
-            // Ajoute une nouvelle todo au model
+            // Add a new todo to the model
             
             setUpModel([]);
 
@@ -254,7 +254,7 @@ describe('controller', function () {
 
 	describe('element removal', function () {
 		it('should remove an entry from the model', function () {
-            // Efface une todo du model
+            // Erase a todo from the model
             
             var todo = {id: 42, title: 'my todo'};
             setUpModel([todo]);

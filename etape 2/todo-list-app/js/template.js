@@ -30,6 +30,20 @@
 	 * @constructor
 	 */
 	function Template() {
+        
+        /*
+        * Useless Template String
+        *
+        * this.defaultTemplate
+        * =	'<li data-id="{{id}}" class="{{completed}}">'
+        * +		'<div class="view">'
+        * +			'<input class="toggle" type="checkbox" {{checked}}>'
+        * +			'<label>{{title}}</label>'
+        * +			'<button class="destroy"></button>'
+        * +		'</div>'
+        * +	'</li>';
+        */
+        
 		this.defaultTemplate =	
             `<li data-id="{{id}}" class="{{completed}}">
 				<div class="view">
@@ -58,6 +72,18 @@
 	 * });
 	 */
 	Template.prototype.show = function (data) {
+        
+        /*
+        * var i and l are create before the for
+        *
+        * var i, l;
+        *
+        * for (i = 0, l = data.length; i < l; i++) {
+        *   
+        *           .....
+        * }
+        */
+        
 		var view = '';
 
 		for (var i = 0, l = data.length; i < l; i++) {

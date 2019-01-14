@@ -80,6 +80,15 @@
 
 		callback = callback || function () {};
         
+        /*
+        * Old id :
+        *
+        * var charset = "0123456789";
+        * for (var i = 0; i < 6; i++) {
+        *     newId += charset.charAt(Math.floor(Math.random() * charset.length));
+        * }
+        */
+        
         // Date.now() return the number of milliseconds since January 1 1970 00:00:00 UTC
         var newId = Date.now();
 
@@ -123,6 +132,16 @@
 			if (todos[i].id == id) {
 				todoId = todos[i].id;
 			}
+            
+        /* 
+        * Useless double for loop
+        *
+        *  for (var i = 0; i < todos.length; i++) {
+        *      if (todos[i].id == todoId) {
+        *          todos.splice(i, 1);
+        *      }
+        *  }
+        */
             
             if (todos[i].id == todoId) {
                 todos.splice(i, 1);
